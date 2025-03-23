@@ -1,28 +1,19 @@
-import React from 'react'
-import { motion } from 'framer-motion'
+import React from 'react';
+import { Wind } from 'lucide-react';
 
 function Header() {
   return (
-    <motion.header
-        initial={{ y: 50, opacity: 0}}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 1, ease: "easeInOut" }} 
-        style={{
-            marginTop:'0px', 
-            marginBottom: '10px',
-            backgroundColor: '#282c34',
-            width: '100%',
-            boxSizing: 'border-box',
-            display: 'flex', // Use flexbox for centering
-            justifyContent: 'center', // Center horizontally
-            alignItems: 'center', // Center vertically
-            height: '100px' // Set a height for the header
-        }}>
-    
-        <h1>Paragliding Weather Checker</h1>
-
-    </motion.header>
-  )
+    <header className="bg-card border-b border-border sticky top-0 z-10">
+      <div className="container mx-auto px-4 py-4 flex items-center justify-center">
+        <div className="flex items-center space-x-2">
+          <Wind className="h-8 w-8 text-primary" />
+          <h1 className="text-2xl font-bold tracking-tight md:text-3xl">
+            Paragliding Weather Checker
+          </h1>
+        </div>
+      </div>
+    </header>
+  );
 }
 
-export default Header
+export default Header;
