@@ -19,7 +19,7 @@ ________________________________________
 ________________________________________
 ##Installation
 1. **Clone the Repository:**
-git clone https://github.com/YOUR-USERNAME/paragliding-weather-checker.git
+git clone https://github.com/jacksonlee45/paragliding-weather-checker.git
 cd paragliding-weather-checker
 2.	**Install Dependencies:**
 npm install
