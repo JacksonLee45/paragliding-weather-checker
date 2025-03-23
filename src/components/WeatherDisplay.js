@@ -1,6 +1,6 @@
 import React from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
+import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
+import { Badge } from '../components/ui/badge';
 import { Thermometer, Wind, Compass, Zap, Sun, Info } from 'lucide-react';
 
 function WeatherDisplay({ weatherData, isGoodForParagliding }) {
