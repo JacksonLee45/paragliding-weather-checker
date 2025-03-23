@@ -1,9 +1,9 @@
 import React from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
-import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '../components/ui/table';
-import { Button } from '../components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from './ui/table';
+import { Button } from './ui/button';
 import { Copy } from 'lucide-react';
-import { useToast } from '../components/ui/use-toast';
+import { useToast } from './ui/use-toast';
 
 function CommonLocation({ onSelectLocation }) {
   const { toast } = useToast();

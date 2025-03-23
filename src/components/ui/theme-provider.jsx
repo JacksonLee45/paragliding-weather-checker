@@ -3,7 +3,6 @@
 
 import * as React from "react";
 import { createContext, useContext, useEffect, useState } from "react";
-import { ThemeProvider } from '@/components/ui/theme-provider';
 
 const initialState = {
   theme: "system",
