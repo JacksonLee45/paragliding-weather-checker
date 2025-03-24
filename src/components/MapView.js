@@ -39,7 +39,7 @@ const MapView = ({ lat, lng }) => {
   };
 
   return (
-    <Card className="w-full">
+    <Card className="w-full h-full">
       <CardHeader className="pb-2">
         <div className="flex items-center space-x-2">
           <MapPin className="h-5 w-5 text-primary" />

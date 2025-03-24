@@ -63,45 +63,18 @@ function TemperatureChart({ data }) {
       </CardHeader>
       <CardContent>
         <div ref={chartContainerRef} className="h-[350px] w-full">
-          <ResponsiveContainer width="100%" height="100%">
-            <LineChart 
-              data={convertedData}
-              margin={{ top: 5, right: 20, left: 20, bottom: 30 }}
-            >
-              <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" opacity={0.3} />
-              <XAxis 
-                dataKey="time" 
-                tick={{ fill: 'var(--muted-foreground)' }}
-                axisLine={{ stroke: 'var(--border)' }}
-                height={50}
-                angle={-45}
-                textAnchor="end"
-              />
-              <YAxis
-                domain={[Math.floor(minTemp - 2), Math.ceil(maxTemp + 2)]}
-                label={{
-                  value: "Temperature (°F)",
-                  angle: -90,
-                  position: "insideLeft",
-                  style: { fill: 'var(--muted-foreground)' }
-                }}
-                tick={{ fill: 'var(--muted-foreground)' }}
-                axisLine={{ stroke: 'var(--border)' }}
-                width={70}
-              />
-              <Tooltip content={<CustomTooltip />} />
-              <Line
-                type="monotone"
-                dataKey="temperature"
-                name="Temperature"
-                stroke="var(--amber-500)"
-                strokeWidth={2}
-                dot={{ r: 4, stroke: 'var(--amber-500)', fill: 'var(--amber-500)' }}
-                activeDot={{ r: 6, stroke: 'var(--amber-600)', fill: 'var(--amber-600)' }}
-                isAnimationActive={true}
-              />
+        <ResponsiveContainer width="100%" height='100%'>
+            <LineChart data={convertedData}>
+                <CartesianGrid strokeDasharray="3 3" opacity={0.3}/>
+                <XAxis dataKey="time" angle={-45} height={65} textAnchor="end" />
+                <YAxis 
+                    label={{ value: "Temperature (°F)", angle: -90, position: "insideLeft" }}
+                    domain={[Math.floor(minTemp), Math.ceil(maxTemp)]} />              
+                <Tooltip content={<CustomTooltip />} />
+                <legend/>
+                <Line type="natural" dataKey="temperature" stroke="#ffffff" strokeWidth={2} name="Temperature" />
             </LineChart>
-          </ResponsiveContainer>
+        </ResponsiveContainer>
         </div>
       </CardContent>
     </Card>
