@@ -32,7 +32,7 @@ function TemperatureChart({ data }) {
       <Card className="w-full">
         <CardHeader className="pb-2">
           <div className="flex items-center space-x-2">
-            <Thermometer className="h-5 w-5 text-amber-500" />
+          <Thermometer className="h-5 w-5 text-amber500" />
             <CardTitle>Temperature Forecast</CardTitle>
           </div>
         </CardHeader>
@@ -57,7 +57,7 @@ function TemperatureChart({ data }) {
     <Card className="w-full">
       <CardHeader className="pb-2">
         <div className="flex items-center space-x-2">
-          <Thermometer className="h-5 w-5 text-amber-500" />
+        <Thermometer className="h-5 w-5 text-amber-500" />
           <CardTitle>Temperature Forecast</CardTitle>
         </div>
       </CardHeader>

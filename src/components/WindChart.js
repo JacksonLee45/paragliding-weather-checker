@@ -10,8 +10,8 @@ const CustomTooltip = ({ active, payload, label }) => {
     return (
       <div className="bg-background p-3 rounded-lg border shadow-md text-sm">
         <p className="font-medium mb-1">{label}</p>
-        <p className="text-primary">Wind Speed: {payload[0].value} mph</p>
-        <p className="text-destructive">Wind Gust: {payload[1].value} mph</p>
+        <p className="text-amber-500">Wind Speed: {payload[0].value} mph</p>
+        <p className="text-amber-500">Wind Gust: {payload[1].value} mph</p>
       </div>
     );
   }
@@ -33,7 +33,7 @@ function WindChart({ data }) {
       <Card className="w-full">
         <CardHeader className="pb-2">
           <div className="flex items-center space-x-2">
-            <Wind className="h-5 w-5 text-primary" />
+            <Wind className="h-5 w-5 text-amber-500" />
             <CardTitle>Wind Forecast</CardTitle>
           </div>
         </CardHeader>
@@ -62,7 +62,7 @@ function WindChart({ data }) {
     <Card className="w-full">
       <CardHeader className="pb-2">
         <div className="flex items-center space-x-2">
-          <Wind className="h-5 w-5 text-primary" />
+          <Wind className="h-5 w-5 text-amber-500" />
           <CardTitle>Wind Forecast</CardTitle>
         </div>
       </CardHeader>
@@ -73,12 +73,12 @@ function WindChart({ data }) {
                 <CartesianGrid strokeDasharray="3 3" opacity={0.3}/>
                 <XAxis dataKey="time" angle={-45} height={65} textAnchor="end" />
                 <YAxis 
-                    label={{ value: "Wind Speed (mph)", angle: -90, position: "insideLeft" }}
+                    label={{ value: "Wind Speed (mph)", angle: -90, position: "insideLeft", dy: 10 }}
                     domain={[0, Math.ceil(maxYValue)]}/>            
                 <Tooltip content={<CustomTooltip />} />
                 <legend/>
                 <Line type="natural" dataKey="windGust" stroke="#f0f0f0" strokeWidth={2} name="Wind Speed" />
-                <Line type="natural" dataKey="windSpeed" stroke="#ffffff" strokeWidth={2} name="Wind Gust"/>
+                <Line type="natural" dataKey="windSpeed" stroke="#ffffff" strokeWidth={2} name="Wind Gust" strokeDasharray="1 1" dot={{ r: 4, strokeWidth: 0, fill: "white", stroke: "white" }}/>
             </LineChart>
         </ResponsiveContainer>
         </div>

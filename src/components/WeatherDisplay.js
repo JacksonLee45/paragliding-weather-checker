@@ -24,7 +24,7 @@ function WeatherDisplay({ weatherData, isGoodForParagliding }) {
       <CardContent>
         <div className="grid gap-4">
           <div className="flex items-center gap-4 p-2 rounded-lg border">
-            <Info className="h-5 w-5 text-muted-foreground" />
+            <Info className="h-5 w-5 text-amber-500" />
             <div className="flex-1">
               <div className="text-sm font-medium">Summary</div>
               <div className="text-lg">{weatherData.condition}</div>
@@ -32,7 +32,7 @@ function WeatherDisplay({ weatherData, isGoodForParagliding }) {
           </div>
           
           <div className="flex items-center gap-4 p-2 rounded-lg border">
-            <Thermometer className="h-5 w-5 text-primary" />
+            <Thermometer className="h-5 w-5 text-amber-500" />
             <div className="flex-1">
               <div className="text-sm font-medium">Temperature</div>
               <div className="text-lg">{Math.round(weatherData.temperature)}°F</div>
@@ -40,7 +40,7 @@ function WeatherDisplay({ weatherData, isGoodForParagliding }) {
           </div>
           
           <div className="flex items-center gap-4 p-2 rounded-lg border">
-            <Wind className="h-5 w-5 text-primary" />
+            <Wind className="h-5 w-5 text-amber-500" />
             <div className="flex-1">
               <div className="text-sm font-medium">Wind Speed</div>
               <div className="text-lg">{weatherData.wind_speed} mph</div>
@@ -48,7 +48,7 @@ function WeatherDisplay({ weatherData, isGoodForParagliding }) {
           </div>
           
           <div className="flex items-center gap-4 p-2 rounded-lg border">
-            <Compass className="h-5 w-5 text-primary" />
+            <Compass className="h-5 w-5 text-amber-500" />
             <div className="flex-1">
               <div className="text-sm font-medium">Wind Direction</div>
               <div className="text-lg">{weatherData.wind_deg}°</div>
@@ -56,7 +56,7 @@ function WeatherDisplay({ weatherData, isGoodForParagliding }) {
           </div>
           
           <div className="flex items-center gap-4 p-2 rounded-lg border">
-            <Zap className="h-5 w-5 text-primary" />
+            <Zap className="h-5 w-5 text-amber-500" />
             <div className="flex-1">
               <div className="text-sm font-medium">Wind Gust</div>
               <div className="text-lg">{weatherData.wind_gust} mph</div>
@@ -65,7 +65,7 @@ function WeatherDisplay({ weatherData, isGoodForParagliding }) {
           
           {weatherData.uvi && (
             <div className="flex items-center gap-4 p-2 rounded-lg border">
-              <Sun className="h-5 w-5 text-primary" />
+              <Sun className="h-5 w-5 text-amber-500" />
               <div className="flex-1">
                 <div className="text-sm font-medium">UV Index</div>
                 <div className="text-lg">{weatherData.uvi}</div>

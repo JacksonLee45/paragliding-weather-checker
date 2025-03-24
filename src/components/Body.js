@@ -79,7 +79,7 @@ function Body() {
 
   return (
     <div className="space-y-6">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-[1fr,2fr] gap-6">
         <WeatherForm onSearch={handleSearch} />
         <CommonLocation onSelectLocation={handleSearch} />
       </div>
@@ -108,10 +108,10 @@ function Body() {
 
       {!loading && coordinates.latitude && coordinates.longitude && weatherData && (
         <div className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <WeatherDisplay weatherData={weatherData} isGoodForParagliding={isGoodForParagliding} />
-            <MapView lat={coordinates.latitude} lng={coordinates.longitude} />
-          </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6" style={{ minHeight: "450px" }}>
+          <WeatherDisplay weatherData={weatherData} isGoodForParagliding={isGoodForParagliding} />
+          <MapView lat={coordinates.latitude} lng={coordinates.longitude} />
+        </div>
 
           <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
             <TabsList className="grid w-full grid-cols-2">
