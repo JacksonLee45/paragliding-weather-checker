@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { Wind } from 'lucide-react';
@@ -19,7 +19,32 @@ const CustomTooltip = ({ active, payload, label }) => {
 };
 
 function WindChart({ data }) {
-  if (!data || data.length === 0) return null;
+  const chartContainerRef = useRef(null);
+  
+  useEffect(() => {
+    if (chartContainerRef.current) {
+      // Force a resize event when the component mounts or updates
+      window.dispatchEvent(new Event('resize'));
+    }
+  }, [data, chartContainerRef]);
+
+  if (!data || data.length === 0) {
+    return (
+      <Card className="w-full">
+        <CardHeader className="pb-2">
+          <div className="flex items-center space-x-2">
+            <Wind className="h-5 w-5 text-primary" />
+            <CardTitle>Wind Forecast</CardTitle>
+          </div>
+        </CardHeader>
+        <CardContent>
+          <div className="h-[350px] flex items-center justify-center">
+            <p className="text-muted-foreground">No wind data available</p>
+          </div>
+        </CardContent>
+      </Card>
+    );
+  }
 
   // Convert data values from m/s to mph
   const convertedData = data.map(item => ({
@@ -42,17 +67,23 @@ function WindChart({ data }) {
         </div>
       </CardHeader>
       <CardContent>
-        <div className="h-[350px]">
+        <div ref={chartContainerRef} className="h-[350px] w-full">
           <ResponsiveContainer width="100%" height="100%">
-            <LineChart data={convertedData} margin={{ top: 5, right: 20, left: 0, bottom: 5 }}>
+            <LineChart 
+              data={convertedData} 
+              margin={{ top: 5, right: 20, left: 20, bottom: 30 }}
+            >
               <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" opacity={0.3} />
               <XAxis 
                 dataKey="time" 
                 tick={{ fill: 'var(--muted-foreground)' }} 
                 axisLine={{ stroke: 'var(--border)' }}
+                height={50}
+                angle={-45}
+                textAnchor="end"
               />
               <YAxis 
-                domain={[0, Math.ceil(maxYValue)]}
+                domain={[0, Math.ceil(maxYValue) + 1]}
                 label={{ 
                   value: "Wind Speed (mph)", 
                   angle: -90, 
@@ -61,9 +92,10 @@ function WindChart({ data }) {
                 }}
                 tick={{ fill: 'var(--muted-foreground)' }}
                 axisLine={{ stroke: 'var(--border)' }}
+                width={70}
               />
               <Tooltip content={<CustomTooltip />} />
-              <Legend />
+              <Legend verticalAlign="top" height={36} />
               <Line 
                 type="monotone" 
                 dataKey="windSpeed" 
@@ -71,6 +103,7 @@ function WindChart({ data }) {
                 stroke="var(--primary)" 
                 strokeWidth={2} 
                 dot={{ r: 4 }}
+                isAnimationActive={true}
               />
               <Line 
                 type="monotone" 
@@ -79,6 +112,7 @@ function WindChart({ data }) {
                 stroke="var(--destructive)" 
                 strokeWidth={2} 
                 dot={{ r: 4 }}
+                isAnimationActive={true}
               />
             </LineChart>
           </ResponsiveContainer>
